@@ -1,8 +1,15 @@
 [
 	{
-		"name": "ex, change later",
+		"name": "Opensauce",
 		"logo": "/media/opensauce.svg",
-		"url": "#"
+		"url": "https://opensauce.com/"
+	},
+	{
+		"name": "Chick-fil-A",
+		"logo": "x", 
+		"url": "https://www.chick-fil-a.com/locations/ca/walnut-creek"
 	}
-]
+]	
+
+
 
