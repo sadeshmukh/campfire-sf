@@ -43,5 +43,14 @@
 			"website": "https://jeet-rocks.vercel.app/"
 		}
 	}
+  {
+    "name": "Ayushi Swami",
+    "subtext": "",
+    "image": "/media/hcflag.svg",
+    "links": {
+      "github": "https://github.com/ayushi-the-troll",
+      "website": "https://ayushi-the-troll.github.io/my-website/index.html"
+    }
+  }
 ]
 
