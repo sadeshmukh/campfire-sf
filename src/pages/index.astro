@@ -1,11 +1,48 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Sponsors from "../components/Sponsors.astro";
+import Team from "../components/Team.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Campfire SF">
+  <Hero />
+  <Sponsors />
+  <Team />
 </Layout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cloudWhite = document.querySelector(".cloud-white");
+  const cloudOrange = document.querySelector(".cloud-orange");
+
+  if (cloudWhite && cloudOrange) {
+    gsap.to(cloudWhite, {
+      x: "-40vw",
+      y: "-10vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    gsap.to(cloudOrange, {
+      x: "40vw",
+      y: "-15vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }
+</script>

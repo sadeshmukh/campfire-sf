@@ -1,0 +1,265 @@
+---
+const rsvpLink = "#"; // TODO: add RSVP
+---
+
+<section class="hero">
+  <div class="clouds">
+    <img
+      src="/media/cloudwhite.svg"
+      alt=""
+      class="cloud cloud-white"
+      aria-hidden="true"
+    />
+    <img
+      src="/media/cloudorange.svg"
+      alt=""
+      class="cloud cloud-orange"
+      aria-hidden="true"
+    />
+  </div>
+
+  <div class="hero-content">
+    <div class="top-logos">
+      <a href="https://hackclub.com" target="_blank" rel="noopener">
+        <img src="/media/hcflag.svg" alt="Hack Club" class="top-logo" />
+      </a>
+      <span class="divider" style="user-select: none;">|</span>
+      <a href="https://opensauce.com" target="_blank" rel="noopener">
+        <img src="/media/opensauce.svg" alt="Open Sauce" class="top-logo" />
+      </a>
+    </div>
+
+    <div class="main-content">
+      <div class="title-row">
+        <img src="/media/sflogosmall.svg" alt="SF" class="sf-logo" />
+        <img src="/media/campfiretext.svg" alt="CAMPFIRE" class="title-img" />
+      </div>
+      <h1 class="subtitle">San Francisco</h1>
+      <p class="date">Feb 28 - Mar 1, 2026</p>
+      <p class="tagline">24 hour hackathon</p>
+      <a href={rsvpLink} class="rsvp-btn">RSVP</a>
+    </div>
+  </div>
+
+  <div class="grass-container">
+    <img src="/media/grass.svg" alt="" class="grass" aria-hidden="true" />
+  </div>
+
+  <img
+    src="/media/campfire.svg"
+    alt=""
+    class="campfire-corner"
+    aria-hidden="true"
+  />
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--fishbowl);
+  }
+
+  .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cloud {
+    position: absolute;
+    will-change: transform;
+  }
+
+  .cloud-white {
+    bottom: -30%;
+    left: -15%;
+    width: 80%;
+    max-width: none;
+  }
+
+  .cloud-orange {
+    bottom: -25%;
+    right: -10%;
+    width: 65%;
+    max-width: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    padding-bottom: 200px;
+  }
+
+  .top-logos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .top-logo {
+    height: 40px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .divider {
+    font-size: 2rem;
+    color: var(--cream);
+    opacity: 0.6;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .sf-logo {
+    height: 70px;
+    width: auto;
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.15));
+    flex-shrink: 0;
+  }
+
+  .title-img {
+    height: 55px;
+    width: auto;
+    filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.1));
+  }
+
+  .subtitle {
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--cream);
+    margin-top: 0.25rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  .date {
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--cream);
+    margin-top: 1rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .tagline {
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--cream);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .rsvp-btn {
+    margin-top: 1.5rem;
+    padding: 1rem 3rem;
+    background-color: var(--orangesicle);
+    color: var(--cream);
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow:
+      0 4px 0 var(--smores),
+      0 6px 12px rgba(0, 0, 0, 0.2);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .rsvp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 var(--smores),
+      0 8px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .rsvp-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+      0 2px 0 var(--smores),
+      0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .grass-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .grass {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .campfire-corner {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: auto;
+    z-index: 20;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.25));
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .top-logo {
+      height: 30px;
+    }
+
+    .sf-logo {
+      height: 45px;
+    }
+
+    .title-img {
+      height: 35px;
+    }
+
+    .title-row {
+      gap: 0.5rem;
+    }
+
+    .hero-content {
+      padding-bottom: 120px;
+    }
+
+    .rsvp-btn {
+      padding: 0.8rem 2rem;
+    }
+
+    .campfire-corner {
+      width: 80px;
+      bottom: 15px;
+      right: 15px;
+    }
+  }
+</style>

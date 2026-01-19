@@ -1,0 +1,47 @@
+[
+	{
+		"name": "Samhith Pola",
+		"subtext": "", 
+		"image": "/media/hcflag.svg",
+		"links": {
+			"github": "https://github.com/SamhithPola2025",
+			"website": "https://samhith.dev/"
+		}
+	},
+	{
+		"name": "Shree Nagandla",
+		"subtext": "",
+		"image": "/media/hcflag.svg",
+		"links": {
+			"github": "#",
+			"website": "#"
+		}
+	},
+	{
+		"name": "Sahil Deshmukh",
+		"subtext": "",
+		"image": "/media/hcflag.svg",
+		"links": {
+			"github": "https://github.com/sadeshmukh",
+			"website": "https://sahil.ink"
+		}
+	},
+	{
+		"name": "Jake Hopkins",
+		"subtext": "",
+		"image": "/media/hcflag.svg",
+		"links": {
+			"github": "https://github.com/Learning-howto-Code"
+		}
+	},
+	{
+		"name": "Jeet Singh",
+		"subtext": "",
+		"image": "/media/hcflag.svg",
+		"links": {
+			"github": "https://github.com/TheJeetSingh",
+			"website": "https://jeet-rocks.vercel.app/"
+		}
+	}
+]
+
