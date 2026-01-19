@@ -1,0 +1,118 @@
+---
+const faqs = [
+	{
+		question: 'Whats a game jam?',
+		answer: 'A game jam is like a hackathon, where you have to create a complete game from scratch that anyone can play.',
+	},
+	{
+		question: 'Who can participate?',
+		answer: 'Campfire is open to all students age 13 to 18. Unfortunately we cannot allow attendees outside of this age range. Anyone can attend regardless of skill level',
+	},
+	{
+		question: 'Is it free?',
+		answer: 'Yes! Thanks to our amazing sponsors, Campfire is completely free for all participants. This includes food, drinks, swag, and prizes.',
+	},
+	{
+		question: 'What should I bring?',
+		answer: 'You should bring your laptop, charger(Don\'t be like me and forget it), and a water bottle. Toiletries, a fresh change of clothes and whatever you need to sleep are recommended.',
+	},
+	{
+		question: 'I don\'t have a team, can I still join?',
+		answer: 'Of course! Our RSVP form has a system for joining a team, and our organizers will be creating balanced teams for anyone without one.',
+	},
+    {
+        question: 'I have more questions',
+        answer: 'Email us at san-francisco@campfire.hackclub.com'
+    }
+];
+---
+
+<section class="faq" id="faq">
+	<h2 class="section-title">FAQ</h2>
+	<div class="faq-container">
+		{faqs.map((faq) => (
+			<details class="faq-item">
+				<summary class="faq-question">{faq.question}</summary>
+				<p class="faq-answer">{faq.answer}</p>
+			</details>
+		))}
+	</div>
+</section>
+
+<style>
+	.faq {
+		position: relative;
+		z-index: 5;
+		padding: 6rem 2rem;
+		padding-bottom: 180px;
+		background-color: var(--orangesicle);
+		min-height: 50vh;
+	}
+
+	.section-title {
+		font-family: 'Dreamplanner', sans-serif;
+		font-size: clamp(2rem, 5vw, 3rem);
+		color: var(--cream);
+		text-align: center;
+		margin-bottom: 3rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.faq-container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.faq-item {
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 12px;
+		margin-bottom: 1rem;
+		color: var(--cream);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.faq-question {
+		padding: 1.5rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.faq-question::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-question::after {
+		content: '+';
+		font-size: 2rem;
+		transition: transform 0.2s ease;
+	}
+
+	.faq-item[open] .faq-question::after {
+		transform: rotate(45deg);
+	}
+
+	.faq-answer {
+		padding: 0 1.5rem 1.5rem;
+		line-height: 1.6;
+		opacity: 0.9;
+	}
+
+	@media (max-width: 768px) {
+		.faq {
+			padding: 4rem 1.5rem;
+			padding-bottom: 150px;
+		}
+		.faq-question {
+			font-size: 1rem;
+			padding: 1rem;
+		}
+		.faq-answer {
+			padding: 0 1rem 1rem;
+		}
+	}
+</style>
