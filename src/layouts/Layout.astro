@@ -20,10 +20,10 @@ const { title = "Campfire SF" } = Astro.props;
     <slot />
     <footer>
       <p>
-        Contact us at <a href="mailto:hello@example.com">hello@example.com</a>
-      </p>
+          Need Help? <a href="mailto:san-francisco@campfire.hackclub.com">san-francisco@campfire.hackclub.com</a>
+        </p>
       <p>
-        <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a href="https://github.com/sadeshmukh/campfire-sf" target="_blank" rel="noopener noreferrer">View the code</a>
       </p>
     </footer>
   </body>
@@ -34,13 +34,17 @@ const { title = "Campfire SF" } = Astro.props;
   footer {
     background-color: var(--starfuel);
     color: var(--cream);
-    text-align: center;
     padding: 2rem 1rem;
     font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   footer p {
-    margin-bottom: 0.5rem;
+    margin: 0;
   }
 
   footer a {
@@ -55,7 +59,6 @@ const { title = "Campfire SF" } = Astro.props;
     font-style: normal;
     font-display: swap;
   }
-  /* ... rest of the styles ... */
 
   :root {
     --fishbowl: #53bfff;
