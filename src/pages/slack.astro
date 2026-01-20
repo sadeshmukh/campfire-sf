@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Join our Slack">
 	<main>
 		<section class="slack-page">
+			<a href="/" class="back-link">&larr; </a>
 			<h1 class="page-title">Join the Campfire Slack</h1>
 			<div class="instructions-container">
 				<p>
@@ -17,14 +18,33 @@ import Layout from '../layouts/Layout.astro';
 					<li>Join the channels #campfire-sf and #campfire-sf-announcements.</li>	
 					
 				</ol>
-				<a href="https://auth.hackclub.com/slack" class="slack-btn" target="_blank" rel="noopener noreferrer">Get Your Invite</a>
+				<a href="https://auth.hackclub.com/slack" class="slack-btn" target="_blank" rel="noopener noreferrer">Join Now</a>
 			</div>
 		</section>
 	</main>
 </Layout>
 
 <style>
+	.back-link {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		color: var(--cream);
+		text-decoration: none;
+		font-size: 1.1rem;
+		font-family: sans-serif;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		transition: background 0.2s ease;
+	}
+
+	.back-link:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
 	.slack-page {
+		position: relative;
 		padding: 6rem 2rem;
 		background-color: var(--starfuel);
 		color: var(--cream);

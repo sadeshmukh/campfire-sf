@@ -18,10 +18,36 @@ const { title = "Campfire SF" } = Astro.props;
   </head>
   <body>
     <slot />
+    <footer>
+      <p>
+        Contact us at <a href="mailto:hello@example.com">hello@example.com</a>
+      </p>
+      <p>
+        <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      </p>
+    </footer>
   </body>
 </html>
 
 <style is:global>
+  /* ... existing styles ... */
+  footer {
+    background-color: var(--starfuel);
+    color: var(--cream);
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: sans-serif;
+  }
+
+  footer p {
+    margin-bottom: 0.5rem;
+  }
+
+  footer a {
+    color: var(--orangesicle);
+    text-decoration: underline;
+  }
+  
   @font-face {
     font-family: "Dreamplanner";
     src: url("/fonts/dreamplanner.otf") format("opentype");
@@ -29,6 +55,7 @@ const { title = "Campfire SF" } = Astro.props;
     font-style: normal;
     font-display: swap;
   }
+  /* ... rest of the styles ... */
 
   :root {
     --fishbowl: #53bfff;
