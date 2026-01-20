@@ -1,5 +1,6 @@
 ---
-const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
+const rsvpLink = "https://forms.hackclub.com/t/a3QSt8MuvHus"; 
+const slackLink = "https://auth.hackclub.com/slack"; 
 ---
 
 <section class="hero">
@@ -37,7 +38,10 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
       <h1 class="subtitle">San Francisco</h1>
       <p class="date">Feb 28 - Mar 1, 2026</p>
       <p class="tagline">24 hour hackathon</p>
-      <a href={rsvpLink} class="rsvp-btn">RSVP</a>
+      <div class="button-group">
+        <a href={rsvpLink} class="rsvp-btn" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href={slackLink} class="rsvp-btn" target="_blank" rel="noopener noreferrer" id="joinSlackBtn">Join the Slack</a>
+      </div>
     </div>
   </div>
 
@@ -52,6 +56,17 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
     aria-hidden="true"
   />
 </section>
+
+<script>
+  document.getElementById('joinSlackBtn')?.addEventListener('click', (event) => {
+    // We don't prevent the default behavior, so the href opens in a new tab
+    
+    // Redirect the current page after a short delay to ensure the new tab has opened
+    setTimeout(() => {
+      window.location.href = '/slack';
+    }, 100);
+  });
+</script>
 
 <style>
   .hero {
@@ -173,8 +188,17 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
   }
 
-  .rsvp-btn {
+  .button-group {
+    display: flex;
+    gap: 1rem;
     margin-top: 1.5rem;
+  }
+
+  .rsvp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
     padding: 1rem 3rem;
     background-color: var(--orangesicle);
     color: var(--cream);
@@ -189,6 +213,7 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
+    text-decoration: none;
   }
 
   .rsvp-btn:hover {
@@ -199,6 +224,37 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
   }
 
   .rsvp-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+      0 2px 0 var(--smores),
+      0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .volunteer-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: var(--cream);
+    color: var(--charcoal);
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .volunteer-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 0 var(--smores),
+      0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .volunteer-btn:active {
     transform: translateY(2px);
     box-shadow:
       0 2px 0 var(--smores),
@@ -254,6 +310,10 @@ const rsvpLink = "https://campfire.fillout.com/apply"; // TODO: add RSVP
 
     .rsvp-btn {
       padding: 0.8rem 2rem;
+    }
+
+    .volunteer-btn {
+      padding: 0.6rem 1.5rem;
     }
 
     .campfire-corner {

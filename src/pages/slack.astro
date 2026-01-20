@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="How to join the slack">
+	<main>
+		<section class="slack-page">
+			<h1 class="page-title">How to join the slack</h1>   
+			<div class="list-container">
+				<ul>
+					<li>Go to the tab that popped up</li>
+					<li>Fill out the form with our info</li>
+					<li>Verify your email</li>
+					<li>Join the slack, and accept the Terms of Service in your DM's</li>
+					<li>At the top, search for the Campfire SF, and Campfire SF anouncements channels</li>
+                    <li>You're all set!</li>
+                    <li>If you have any questions email us at san-francisco@campfire.hackclub.com</li>    
+				</ul>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.slack-page {
+		padding: 6rem 2rem;
+		background-color: var(--starfuel);
+		color: var(--cream);
+		min-height: 100vh;
+	}
+
+	.page-title {
+		font-family: 'Dreamplanner', sans-serif;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+		text-align: center;
+		margin-bottom: 3rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.list-container {
+		max-width: 800px;
+		margin: 0 auto;
+		font-size: 1.2rem;
+		background: rgba(255, 255, 255, 0.05);
+		padding: 2rem;
+		border-radius: 16px;
+	}
+
+	.list-container ul {
+		list-style-position: inside;
+		padding-left: 1rem;
+	}
+
+	.list-container li {
+		margin-bottom: 1rem;
+		line-height: 1.6;
+	}
+</style>
