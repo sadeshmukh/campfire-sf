@@ -16,4 +16,3 @@ bun format && bun check
 ```
 
 If checks pass, you're good to go!
-
