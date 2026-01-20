@@ -1,94 +1,97 @@
 ---
-import sponsorsData from '../data/sponsors.json';
+import sponsorsData from "../data/sponsors.json";
 
 interface Sponsor {
-	name: string;
-	logo: string;
-	url: string;
+  name: string;
+  logo: string;
+  url: string;
 }
 
 const sponsors: Sponsor[] = sponsorsData;
 ---
 
 <section class="sponsors" id="sponsors">
-	<h2 class="section-title">Sponsors</h2>
-	<div class="sponsors-grid">
-		{sponsors.map((sponsor) => (
-			<a href={sponsor.url} class="sponsor-card" target="_blank" rel="noopener">
-				<img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
-			</a>
-		))}
-	</div>
+  <h2 class="section-title">Sponsors</h2>
+  <div class="sponsors-grid">
+    {
+      sponsors.map((sponsor) => (
+        <a href={sponsor.url} class="sponsor-card" target="_blank" rel="noopener">
+          <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
+        </a>
+      ))
+    }
+  </div>
 </section>
 
 <style>
-	.sponsors {
-		position: relative;
-		z-index: 5;
-		padding: 6rem 2rem;
-		padding-bottom: 180px;
-		background-color: var(--starfuel);
-		min-height: 50vh;
-	}
+  .sponsors {
+    position: relative;
+    z-index: 5;
+    padding: 6rem 2rem;
+    padding-bottom: 180px;
+    background-color: var(--starfuel);
+    min-height: 50vh;
+  }
 
-	.section-title {
-		font-family: 'Dreamplanner', sans-serif;
-		font-size: clamp(2rem, 5vw, 3rem);
-		color: var(--cream);
-		text-align: center;
-		margin-bottom: 3rem;
-		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-	}
+  .section-title {
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
-	.sponsors-grid {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 2rem;
-		max-width: 1000px;
-		margin: 0 auto;
-	}
+  .sponsors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 
-	.sponsor-card {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: rgba(255, 255, 255, 0.1);
-		border-radius: 16px;
-		padding: 1.5rem 2rem;
-		transition: transform 0.2s ease, background 0.2s ease;
-		backdrop-filter: blur(4px);
-	}
+  .sponsor-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
 
-	.sponsor-card:hover {
-		transform: translateY(-4px);
-		background: rgba(255, 255, 255, 0.15);
-	}
+  .sponsor-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.15);
+  }
 
-	.sponsor-logo {
-		height: 60px;
-		width: auto;
-		filter: brightness(0) invert(1);
-		opacity: 0.9;
-	}
+  .sponsor-logo {
+    height: 60px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
 
-	@media (max-width: 768px) {
-		.sponsors {
-			padding: 4rem 1.5rem;
-			padding-bottom: 150px;
-		}
+  @media (max-width: 768px) {
+    .sponsors {
+      padding: 4rem 1.5rem;
+      padding-bottom: 150px;
+    }
 
-		.sponsors-grid {
-			gap: 1rem;
-		}
+    .sponsors-grid {
+      gap: 1rem;
+    }
 
-		.sponsor-card {
-			padding: 1rem 1.5rem;
-		}
+    .sponsor-card {
+      padding: 1rem 1.5rem;
+    }
 
-		.sponsor-logo {
-			height: 40px;
-		}
-	}
+    .sponsor-logo {
+      height: 40px;
+    }
+  }
 </style>
-
