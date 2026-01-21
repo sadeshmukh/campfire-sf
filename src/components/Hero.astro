@@ -1,9 +1,11 @@
 ---
-const rsvpLink = "https://forms.hackclub.com/t/a3QSt8MuvHus";
-const slackLink = "https://auth.hackclub.com/slack";
+const eventId = "recLpjWD0ooEKPmnb";
 ---
 
 <section class="hero">
+  <img src="/media/cloudupleft.svg" alt="" class="cloud-top-left" aria-hidden="true" />
+  <img src="/media/astronaut.svg" alt="" class="astronaut" aria-hidden="true" />
+
   <div class="clouds">
     <img src="/media/cloudwhite.svg" alt="" class="cloud cloud-white" aria-hidden="true" />
     <img src="/media/cloudorange.svg" alt="" class="cloud cloud-orange" aria-hidden="true" />
@@ -28,10 +30,11 @@ const slackLink = "https://auth.hackclub.com/slack";
       <h1 class="subtitle">San Francisco</h1>
       <p class="date">Feb 28 - Mar 1, 2026</p>
       <p class="tagline">24 hour game jam</p>
-      <div class="button-group">
-        <a href={rsvpLink} class="rsvp-btn" target="_blank" rel="noopener noreferrer">RSVP</a>
-        <a class="rsvp-btn" target="_blank" rel="noopener noreferrer" id="slackBtn">Join the Slack</a>
+      <div class="rsvp-form">
+        <input type="email" id="emailInput" placeholder="your@email.com" class="email-input" required />
+        <button type="button" id="rsvpBtn" class="rsvp-btn">RSVP</button>
       </div>
+      <a class="slack-btn" id="slackBtn">Join the Slack</a>
     </div>
   </div>
 
@@ -42,7 +45,27 @@ const slackLink = "https://auth.hackclub.com/slack";
   <img src="/media/campfire.svg" alt="" class="campfire-corner" aria-hidden="true" />
 </section>
 
-<script>
+<script define:vars={{ eventId }}>
+  const emailInput = document.getElementById("emailInput");
+  const rsvpBtn = document.getElementById("rsvpBtn");
+
+  rsvpBtn?.addEventListener("click", () => {
+    const email = emailInput?.value?.trim();
+    if (!email) {
+      emailInput?.focus();
+      return;
+    }
+    const encodedEmail = encodeURIComponent(email);
+    const url = `https://forms.hackclub.com/campfire-signup?email=${encodedEmail}&event=${eventId}`;
+    window.open(url, "_blank");
+  });
+
+  emailInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      rsvpBtn?.click();
+    }
+  });
+
   document.getElementById("slackBtn")?.addEventListener("click", () => {
     setTimeout(() => {
       window.location.href = "/slack";
@@ -78,17 +101,42 @@ const slackLink = "https://auth.hackclub.com/slack";
   }
 
   .cloud-white {
-    bottom: -30%;
-    left: -15%;
-    width: 80%;
+    bottom: -20%;
+    left: 0;
+    width: 110%;
     max-width: none;
+    transform: translateX(-15%);
   }
 
   .cloud-orange {
-    bottom: -25%;
-    right: -10%;
-    width: 65%;
+    bottom: -20%;
+    right: 0;
+    width: 110%;
     max-width: none;
+    transform: translateX(25%);
+  }
+
+  .cloud-top-left {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 35%;
+    max-width: 400px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .astronaut {
+    position: absolute;
+    top: 100px;
+    right: 80px;
+    width: 120px;
+    height: auto;
+    scale: 2;
+    transform: rotate(-10deg);
+    z-index: 20;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.25));
+    pointer-events: none;
   }
 
   .hero-content {
@@ -170,19 +218,48 @@ const slackLink = "https://auth.hackclub.com/slack";
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
   }
 
-  .button-group {
+  .rsvp-form {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     margin-top: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: none;
+    border-radius: 12px;
+    background-color: var(--cream);
+    color: var(--smores);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.1),
+      0 4px 0 rgba(0, 0, 0, 0.1);
+    outline: none;
+    min-width: 0;
+  }
+
+  .email-input::placeholder {
+    color: var(--smores);
+    opacity: 0.5;
+  }
+
+  .email-input:focus {
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.1),
+      0 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 3px var(--orangesicle);
   }
 
   .rsvp-btn {
-    margin-top: 1.5rem;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     background-color: var(--orangesicle);
     color: var(--cream);
     font-family: "Dreamplanner", sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -192,11 +269,7 @@ const slackLink = "https://auth.hackclub.com/slack";
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    text-decoration: none;
+    white-space: nowrap;
   }
 
   .rsvp-btn:hover {
@@ -211,6 +284,27 @@ const slackLink = "https://auth.hackclub.com/slack";
     box-shadow:
       0 2px 0 var(--smores),
       0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .slack-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    background-color: transparent;
+    color: var(--cream);
+    font-family: "Dreamplanner", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    border: 2px solid var(--cream);
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      transform 0.15s ease;
+    text-decoration: none;
+  }
+
+  .slack-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
   }
 
   .grass-container {
@@ -260,13 +354,39 @@ const slackLink = "https://auth.hackclub.com/slack";
       padding-bottom: 120px;
     }
 
+    .rsvp-form {
+      flex-direction: column;
+      max-width: 300px;
+    }
+
     .rsvp-btn {
-      padding: 0.8rem 2rem;
+      padding: 0.9rem 2rem;
+      width: 100%;
+    }
+
+    .email-input {
+      text-align: center;
     }
 
     .campfire-corner {
       width: 80px;
       bottom: 15px;
+      right: 15px;
+    }
+
+    .clouds {
+      display: none;
+    }
+
+    .cloud-top-left {
+      width: 50%;
+      top: -3%;
+      left: -10%;
+    }
+
+    .astronaut {
+      width: 70px;
+      top: 15px;
       right: 15px;
     }
   }
