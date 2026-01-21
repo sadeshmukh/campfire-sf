@@ -18,10 +18,39 @@ const { title = "Campfire SF" } = Astro.props;
   </head>
   <body>
     <slot />
+    <footer>
+      <p>
+        Need Help? <a href="mailto:san-francisco@campfire.hackclub.com">san-francisco@campfire.hackclub.com</a>
+      </p>
+      <p>
+        <a href="https://github.com/sadeshmukh/campfire-sf" target="_blank" rel="noopener noreferrer">View the code</a>
+      </p>
+    </footer>
   </body>
 </html>
 
 <style is:global>
+  footer {
+    background-color: var(--starfuel);
+    color: var(--cream);
+    padding: 2rem 1rem;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  footer a {
+    color: var(--orangesicle);
+    text-decoration: underline;
+  }
+
   @font-face {
     font-family: "Dreamplanner";
     src: url("/fonts/dreamplanner.otf") format("opentype");
