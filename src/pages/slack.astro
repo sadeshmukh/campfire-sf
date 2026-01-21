@@ -5,23 +5,87 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Join our Slack">
   <main>
     <section class="slack-page">
-      <a href="/" class="back-link">&larr; </a>
-      <h1 class="page-title">Join the Campfire Slack</h1>
-      <div class="instructions-container">
-        <p>Our slack is where all of our communications come through:</p>
-        <ol>
-          <li>Fill out the form on the tab that just opened</li>
-          <li>Verify your Email</li>
-          <li>Once you are in, accept the terms and conditions in your DMs.</li>
-          <li>Join the channels #campfire-sf and #campfire-sf-announcements.</li>
-        </ol>
-        <a href="https://auth.hackclub.com/slack" class="slack-btn" target="_blank" rel="noopener noreferrer"
-          >Join Now</a
-        >
+      <a href="/" class="back-link">&larr;</a>
+
+      <div class="content-wrapper">
+        <h1 class="page-title">Join the Hack Club Slack</h1>
+        <p class="subtitle">Stay tuned for updates!</p>
+
+        <div class="signup-box">
+          <form id="slack-form" class="email-form">
+            <input type="email" id="email" name="email" placeholder="your@email.com" required class="email-input" />
+            <button type="submit" class="slack-btn">Get Your Invite</button>
+          </form>
+          <div id="status-message" class="status-message"></div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <span class="step-text">Enter your email above</span>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <span class="step-text">Complete Hack Club signup</span>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <span class="step-text">You're in! Check #campfire-sf for announcements & updates.</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 </Layout>
+
+<script>
+  const form = document.getElementById("slack-form") as HTMLFormElement;
+  const statusMessage = document.getElementById("status-message") as HTMLDivElement;
+  const submitBtn = form.querySelector(".slack-btn") as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("email") as HTMLInputElement;
+    const email = emailInput.value.trim();
+
+    if (!email) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    statusMessage.className = "status-message";
+    statusMessage.textContent = "";
+
+    try {
+      const response = await fetch("https://cfsf-bot.halceon.dev/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: "intentionallypublic",
+        }),
+      });
+
+      if (response.ok) {
+        statusMessage.textContent = "You're on the list! Redirecting to signup...";
+        statusMessage.classList.add("success");
+        setTimeout(() => {
+          window.open("https://auth.hackclub.com/slack", "_blank");
+        }, 1000);
+      } else {
+        throw new Error("Request failed");
+      }
+    } catch (error) {
+      statusMessage.textContent = "Something went wrong. Please try again.";
+      statusMessage.classList.add("error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Get Your Invite";
+    }
+  });
+</script>
 
 <style>
   .back-link {
@@ -30,85 +94,182 @@ import Layout from "../layouts/Layout.astro";
     left: 2rem;
     color: var(--cream);
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-family: sans-serif;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: background 0.2s ease;
+    border-radius: 50%;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
   }
 
   .back-link:hover {
     background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-3px);
   }
 
   .slack-page {
     position: relative;
     padding: 6rem 2rem;
-    background-color: var(--starfuel);
+    background: var(--starfuel);
     color: var(--cream);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
+
+  .content-wrapper {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
   }
 
   .page-title {
     font-family: "Dreamplanner", sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    text-align: center;
-    margin-bottom: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
   }
 
-  .instructions-container {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2rem 3rem;
+  .subtitle {
+    color: var(--icecream);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+  }
+
+  .signup-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 16px;
-    text-align: center;
-  }
-
-  .instructions-container p {
-    margin-bottom: 2rem;
-  }
-
-  .instructions-container ol {
-    list-style-position: inside;
-    text-align: left;
-    display: inline-block;
+    padding: 2rem;
     margin-bottom: 2.5rem;
   }
 
-  .instructions-container li {
-    margin-bottom: 1rem;
-    line-height: 1.6;
+  .email-form {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    font-family: system-ui, sans-serif;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: var(--cream);
+    color: var(--starfuel);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .email-input::placeholder {
+    color: #999;
+  }
+
+  .email-input:focus {
+    border-color: var(--orangesicle);
   }
 
   .slack-btn {
-    padding: 1rem 2.5rem;
+    padding: 1rem 1.5rem;
     background-color: var(--orangesicle);
     color: var(--cream);
     font-family: "Dreamplanner", sans-serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-size: 1rem;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow:
-      0 4px 0 var(--smores),
-      0 6px 12px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    box-shadow: 0 4px 0 var(--smores);
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
-    text-decoration: none;
   }
 
-  .slack-btn:hover {
+  .slack-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow:
-      0 6px 0 var(--smores),
-      0 8px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 0 var(--smores);
+  }
+
+  .slack-btn:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--smores);
+  }
+
+  .slack-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .status-message {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    min-height: 1.5rem;
+  }
+
+  .status-message:empty {
+    display: none;
+  }
+
+  .status-message.success {
+    color: var(--emerald);
+  }
+
+  .status-message.error {
+    color: var(--orangesicle);
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    background: var(--fishbowl);
+    color: var(--starfuel);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 500px) {
+    .email-form {
+      flex-direction: column;
+    }
+
+    .slack-btn {
+      width: 100%;
+    }
+
+    .slack-page {
+      padding: 5rem 1.5rem 3rem;
+    }
   }
 </style>
