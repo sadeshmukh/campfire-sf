@@ -29,8 +29,8 @@ import Layout from "../layouts/Layout.astro";
         <h3>How are they kept safe?</h3>
         <p>
           Everyone at the event will be between the ages of 13 and 18, and under adult supervision the whole time.
-          Participants will not be able to leave the venue, and nobody else except for parents/guardians will be allowed to
-          enter.
+          Participants will not be able to leave the venue, and nobody else except for parents/guardians will be allowed
+          to enter.
         </p>
 
         <h3>Logistics.</h3>
@@ -46,7 +46,9 @@ import Layout from "../layouts/Layout.astro";
         </p>
 
         <h3>I have more questions</h3>
-        <p>You can always reach out to us at san-francisco@campfire.hackclub.com, and we will reply as soon as possible!</p>
+        <p>
+          You can always reach out to us at san-francisco@campfire.hackclub.com, and we will reply as soon as possible!
+        </p>
       </div>
     </section>
   </main>
@@ -62,6 +64,7 @@ import Layout from "../layouts/Layout.astro";
       flex-direction: column;
       align-items: center;
       font-family: sans-serif;
+      overflow-x: hidden;
     }
 
     .back-link {
@@ -91,6 +94,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .content-container {
+      width: 100%;
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.1rem;
@@ -122,6 +126,37 @@ import Layout from "../layouts/Layout.astro";
     .content-container a {
       color: var(--orangesicle);
       text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .parent-info-page {
+        padding: 3rem 1.25rem 4rem;
+        align-items: stretch;
+      }
+
+      .back-link {
+        position: static;
+        margin-bottom: 1.25rem;
+        display: inline-block;
+      }
+
+      .page-title {
+        font-size: clamp(2rem, 9vw, 3rem);
+        margin-bottom: 2rem;
+      }
+
+      .content-container {
+        padding: 1.5rem 1.25rem;
+      }
+
+      .content-container h3 {
+        font-size: 1.3rem;
+      }
+
+      .content-container p {
+        font-size: 1rem;
+        word-break: break-word;
+      }
     }
   </style>
 </Layout>
