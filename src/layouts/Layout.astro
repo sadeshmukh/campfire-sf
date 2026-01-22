@@ -20,12 +20,16 @@ const { title = "Campfire SF" } = Astro.props;
   <body>
     <slot />
     <footer>
-      <p>
-        Need Help? <a href="mailto:san-francisco@campfire.hackclub.com">san-francisco@campfire.hackclub.com</a>
-      </p>
-      <p>
-        <a href="https://github.com/sadeshmukh/campfire-sf" target="_blank" rel="noopener noreferrer">View the code</a>
-      </p>
+      <div class="footer-content">
+        <p class="footer-help">
+          Need Help? <a href="mailto:san-francisco@campfire.hackclub.com">san-francisco@campfire.hackclub.com</a>
+        </p>
+        <div class="footer-links">
+          <a href="https://hackclub.com" target="_blank" rel="noopener noreferrer">Hack Club</a>
+          <span class="footer-divider">•</span>
+          <a href="https://github.com/sadeshmukh/campfire-sf" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
@@ -34,22 +38,67 @@ const { title = "Campfire SF" } = Astro.props;
   footer {
     background-color: var(--starfuel);
     color: var(--cream);
-    padding: 2rem 1rem;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    padding: 2rem 1.5rem;
   }
 
-  footer p {
+  .footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-help {
+    font-family: "Dreamplanner", sans-serif;
+    font-size: 1.1rem;
     margin: 0;
   }
 
-  footer a {
+  .footer-help a {
     color: var(--orangesicle);
-    text-decoration: underline;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-help a:hover {
+    opacity: 0.8;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: "Dreamplanner", sans-serif;
+    font-size: 1rem;
+  }
+
+  .footer-links a {
+    color: var(--cream);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
+  }
+
+  .footer-divider {
+    opacity: 0.4;
+  }
+
+  @media (min-width: 600px) {
+    .footer-content {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .footer-help {
+      font-size: 1.2rem;
+    }
   }
 
   @font-face {
