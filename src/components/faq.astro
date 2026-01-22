@@ -43,7 +43,8 @@ const faqs = [
       faqs.map((faq) => (
         <details class="faq-item">
           <summary class="faq-question">{faq.question}</summary>
-          <p class="faq-answer" set:html={faq.answer} />
+          {/* prettier-ignore */}
+          <p class="faq-answer" set:html={faq.answer}></p>
         </details>
       ))
     }
