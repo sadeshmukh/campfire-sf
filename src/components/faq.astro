@@ -1,6 +1,10 @@
 ---
 const faqs = [
   {
+    question: "I'm a parent, what do I need to know?",
+    answer: '<a href="/parent-info" class="parent-link">Check out the parent page here</a>',
+  },
+  {
     question: "What's a game jam?",
     answer:
       "A game jam is like a hackathon, where you have to create a complete game from scratch that anyone can play.",
@@ -39,7 +43,7 @@ const faqs = [
       faqs.map((faq) => (
         <details class="faq-item">
           <summary class="faq-question">{faq.question}</summary>
-          <p class="faq-answer">{faq.answer}</p>
+          <p class="faq-answer" set:html={faq.answer}></p>
         </details>
       ))
     }
@@ -107,6 +111,26 @@ const faqs = [
     padding: 0 1.5rem 1.5rem;
     line-height: 1.6;
     opacity: 0.9;
+  }
+
+  .faq-answer .parent-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--cream);
+    color: var(--starfuel);
+    border: 2px solid var(--smores);
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  }
+
+  .faq-answer .parent-link:hover {
+    transform: translateY(-2px);
+    background: var(--icecream);
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
