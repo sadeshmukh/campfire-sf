@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Parent Information">
+	<main>
+		<section class="parent-info-page">
+			<a href="/" class="back-link">&larr; Back to Home</a>
+			<h1 class="page-title">Parent Info</h1>
+			<div class="content-container">
+				<p>
+					We are excited to see your child at Campfire SF! Our team has ran over 5 of these events, and spent months planning everything to a T. 
+				</p>
+
+				<h3>What is it?</h3>
+				<p>
+				    Campfire SF is a 24 hours event where students come together to code, make friends, and have fun! Campfire SF is part of a larger event through the nonprofit Hackclub, where gamjams will take place in over 200 cities worldwide on the same day.
+				</p>
+
+				<h3>What will my child be doing?</h3>
+				<p>
+					Throughout the event, students will be brainstaromting, coding, and developing games in groups of up to 4. There will be workshops, project updates, and fun brain breaks. 
+				</p>
+
+				<h3>How are they kept safe?</h3>
+				<p>
+					Everyone at the event will be between the ages of 13 and 18, and under adult supervision the whole time. Participants will not be able to leave the venue, and none except for parents/guardians will be allowed to enter.
+
+				<h3>Logistics.</h3>
+				<p>
+					Campfire SF will take place at 35 S Park St, San Francisco, CA 94107. The event will open at 11 Saturday morning, and end Sunday at 1 PM. Waivers will be sent out in the weeks leading up to the event.
+				</p>
+                <h3>Is it free?</h3>
+                <p>
+                    Yes, Campfire SF is completely free, and supported by our wonderful sponsors. Everything including meals, prizes, and venue has been donated.
+                </p>
+                <h3>I have more questions</h3>
+                <p>You can always reach out to us at san-francisco@campfire.hackclub.com, and we will reply within 24 hours.</p>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.parent-info-page {
+		position: relative;
+		padding: 4rem 2rem 6rem;
+		background-color: var(--starfuel);
+		color: var(--cream);
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-family: sans-serif;
+	}
+
+	.back-link {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		color: var(--cream);
+		text-decoration: none;
+		font-size: 1.1rem;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		transition: background 0.2s ease;
+	}
+
+	.back-link:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.page-title {
+		font-family: 'Dreamplanner', sans-serif;
+		font-size: clamp(2.5rem, 6vw, 4rem);
+        color: var(--orangesicle);
+		text-align: center;
+		margin-bottom: 3rem;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	}
+
+	.content-container {
+		max-width: 800px;
+		margin: 0 auto;
+		font-size: 1.1rem;
+		background: rgba(255, 255, 255, 0.05);
+		padding: 2rem 3rem;
+		border-radius: 16px;
+		line-height: 1.6;
+	}
+
+	.content-container h2 {
+		font-family: 'Dreamplanner', sans-serif;
+		font-size: 2rem;
+		margin-bottom: 1.5rem;
+		color: var(--orangesicle);
+	}
+
+	.content-container h3 {
+		font-family: 'Dreamplanner', sans-serif;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: var(--orangesicle);
+	}
+
+	.content-container p {
+		margin-bottom: 1rem;
+	}
+
+	.content-container a {
+		color: var(--orangesicle);
+		text-decoration: underline;
+	}
+</style>
+
