@@ -55,43 +55,51 @@ const faqs = [
   .faq {
     position: relative;
     z-index: 5;
-    padding: 6rem 2rem;
-    padding-bottom: 180px;
+    padding: 4rem 1.5rem;
+    padding-bottom: 120px;
     background-color: var(--orangesicle);
-    min-height: 50vh;
+    min-height: auto;
   }
 
   .section-title {
     font-family: "Dreamplanner", sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     color: var(--cream);
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .faq-container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
   .faq-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--cream);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .faq-item:hover {
+    background: rgba(255, 255, 255, 0.12);
   }
 
   .faq-question {
-    padding: 1.5rem;
-    font-size: 1.2rem;
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
   }
 
   .faq-question::-webkit-details-marker {
@@ -100,8 +108,9 @@ const faqs = [
 
   .faq-question::after {
     content: "+";
-    font-size: 2rem;
+    font-size: 1.5rem;
     transition: transform 0.2s ease;
+    flex-shrink: 0;
   }
 
   .faq-item[open] .faq-question::after {
@@ -109,22 +118,33 @@ const faqs = [
   }
 
   .faq-answer {
-    padding: 0 1.5rem 1.5rem;
+    padding: 0 1rem 1.25rem;
     line-height: 1.6;
     opacity: 0.9;
   }
 
-  @media (max-width: 768px) {
+  .faq-answer :global(a) {
+    color: var(--cream);
+    text-decoration: underline;
+  }
+
+  @media (min-width: 600px) {
     .faq {
-      padding: 4rem 1.5rem;
+      padding: 5rem 2rem;
       padding-bottom: 150px;
     }
-    .faq-question {
-      font-size: 1rem;
-      padding: 1rem;
+
+    .section-title {
+      margin-bottom: 3rem;
     }
+
+    .faq-question {
+      font-size: 1.2rem;
+      padding: 1.5rem;
+    }
+
     .faq-answer {
-      padding: 0 1rem 1rem;
+      padding: 0 1.5rem 1.5rem;
     }
   }
 </style>
